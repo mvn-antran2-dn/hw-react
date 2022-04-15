@@ -1,8 +1,3 @@
-// import  '../../style/base';
-// import  '../../style/layout';
-// import  '../../style/modules';
-// import  '../../style/pages';
-// import  '../../style/state';
 function Header() {
     return (<>
     <header className="page-header">
