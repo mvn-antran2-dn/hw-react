@@ -1,8 +1,10 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from '../logo.svg';
+import '../style/App.css';
+import MainBook from './MainBook';
+
 
 function App() {
-  return (
+  return (<>
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
@@ -17,9 +19,11 @@ function App() {
         >
           Learn React
         </a>
+        <h1>Hello World!</h1>
       </header>
     </div>
+   <MainBook />
+   </>
   );
 }
-
 export default App;
