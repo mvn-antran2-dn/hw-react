@@ -1,3 +1,4 @@
+/* form */
 form {
   text-align: left;
   max-width: 500px;
@@ -40,6 +41,7 @@ button:hover{
 textarea{
   height: 100%;
 }
+/* table */
 .tb-submit {
   width: 100%;
   border-collapse: collapse;
@@ -87,3 +89,56 @@ input[type="number"] {
 span{
   color: red;
 }
+/* popup */
+.popup {
+  width: 400px;
+  height: 150px;
+  border-radius: 8px;
+  color: #111;
+  background: #d9d9d9;
+  z-index: 1;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
+.popup-header {
+  border-bottom: 1px solid #fff;
+  padding: 0 16px;
+  text-align: left;
+}
+
+.popup-content {
+  height: 80px;
+  margin: 0 auto;
+  text-align: center;
+  text-transform: capitalize;
+  letter-spacing: 1px;
+  /* font-size: 22px; */
+}
+
+.popup-footer {
+  border-top: 1px solid #fff;
+  text-align: right;
+  display: flex;
+  
+}
+.popup-footer .btn {
+  padding: 4px 16px;
+  margin: 8px;
+  outline: none;
+  cursor: pointer;
+  border-radius: 4px;
+  color: white;
+  text-align: center;
+}
+
+.popup-footer .btn-cancel {
+  background-color: red;
+}
+
+.popup-footer .btn-delete {
+  background-color: #05ad05;
+}
+

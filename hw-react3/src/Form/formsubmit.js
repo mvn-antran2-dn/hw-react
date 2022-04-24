@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
-import TableSubmit from './table';
+import TableSubmit from '../table/table';
 import { toast } from "react-toastify";
+import Popup from '../modules/popup';
 
 class SubmitForm extends Component{
   constructor(){
@@ -32,28 +33,38 @@ class SubmitForm extends Component{
     evt.preventDefault();
     if(this.state.password.length < 8 ) 
       toast.warning("Password more than 8 characters");
-      else{
-        if (
-          !this.state.country || !this.state.email || !this.state.password || 
-          !this.state.gender || !this.state.agree  
-        ) {
-          toast.warning("Fields marked with * cannot be left blank!");
-          return;
-        } else {
-          const { id, email, password, country, gender, info, agree, arrUser } = this.state;
-          const item = { id, email, password, country, gender, info, agree };
-          this.setState({ arrUser: [...arrUser, item] });
-          toast.success("Register Success!");
-        }
+    else{
+      if (
+        !this.state.country || !this.state.email || !this.state.password || 
+        !this.state.gender || !this.state.agree  
+      ) {
+        toast.warning("Fields marked with * cannot be left blank!");
+        return;
+      } else {
+        const { id, email, password, country, gender, info, agree, arrUser } = this.state;
+        const item = { id, email, password, country, gender, info, agree };
+        this.setState({ arrUser: [...arrUser, item] });
+        toast.success("Submit Success!");
       }
-    
+    }
   }
 
-  handleDeleteUser = (user) => {
+  handleOnDelete(item){
+    this.setState({ confirm:true, id : item.id })
+   }
+
+  handleOnCancel(){
+    this.setState({confirm:false})
+  }
+
+  handleOnConfirm(){
+    this.setState({
+      confirm: false,
+    });
     let currentUser = this.state.arrUser;
-    currentUser = currentUser.filter((item) => item.id !== user.id);
+    currentUser = currentUser.filter((item) => item.id !== this.state.id);
     this.setState({ arrUser: [...currentUser] });
-  };
+  }
 
   render(){
     return (<>
@@ -100,11 +111,15 @@ class SubmitForm extends Component{
           <input  type="checkbox" name="agree" defaultChecked={this.state.agree} onChange={(e) => this.handleOnChange(e)}/>
         </div>
         <div className="btn-set">
-          <button onClick={(e) => this.handleOnSubmit(e)}>Submit</button>
+          <button >Submit</button>
         </div>
       </form>
-      <TableSubmit arrUser={this.state.arrUser} 
-          handleDeleteUser={this.handleDeleteUser}/>
+      <TableSubmit arrUser={this.state.arrUser}
+                  handleOnDelete = {(item) => this.handleOnDelete(item)}  />
+      <Popup confirm = {this.state.confirm} 
+             handleOnCancel={() => this.handleOnCancel()}
+             handleOnConfirm={() => this.handleOnConfirm()}
+      />
       </>
     );
   }
