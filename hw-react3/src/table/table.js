@@ -1,9 +1,8 @@
-import React, { Component } from "react";
+import React from "react";
 import Item from "./item";
 
-class TableSubmit extends Component{
-render(){
-   const { arrUser, handleOnDelete } = this.props;
+const TableSubmit = (props) =>{
+  const { arrUser, handleOnDeleteBtn } = props;
   return(<>
     <table className="tb-submit">
     <thead>
@@ -18,12 +17,11 @@ render(){
       </tr>
     </thead>
     <tbody>
-      <Item  arrUser={arrUser} 
-            DeleteItem={(item) => handleOnDelete(item)}/>
+      <Item arrUser={arrUser} 
+            deleteItem={(item) => handleOnDeleteBtn(item)}/>
     </tbody>
     </table></>
-    );
-  }
+  );
 }
 
 export default TableSubmit;

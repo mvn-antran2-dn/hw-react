@@ -1,86 +1,66 @@
-import React, {Component} from 'react';
+import React, { useState } from 'react';
 import TableSubmit from '../table/table';
 import { toast } from "react-toastify";
-import Popup from '../modules/popup';
+import useFields from '../CustomHook/useFields';
 
-class SubmitForm extends Component{
-  constructor(){
-    super();
-    this.state = {
-      id: '',
-      email: '',
-      password: '',
-      country: 'VietNam',
-      gender: '',
-      info: '',
-      agree: true,
-      arrUser: [],
-    };
-  }
+const SubmitForm = () => {
+  const [arUsers,setArrUsers] = useState([])
+  const email = useFields('email');
+  const password = useFields('password');
+  const country = useFields('');
+  const gender = useFields('radio');
+  const info = useFields('');
+  const agree = useFields('checkbox');
 
-  handleOnChange(evt) {
-    const target = evt.target;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
-    const name = target.name;
-
-  this.setState({
-    id: Math.floor(Math.random() * 10000),
-    [name] : value
-  });
-  }
-
-  handleOnSubmit(evt){
+  const handleOnSubmit = (evt) => {
     evt.preventDefault();
-    if(this.state.password.length < 8 ) 
+    const id = Math.floor(Math.random() * 10000);
+    if(password.value.length < 8 ) 
       toast.warning("Password more than 8 characters");
     else{
       if (
-        !this.state.country || !this.state.email || !this.state.password || 
-        !this.state.gender || !this.state.agree  
+        !country.value || !email.value || !password.value || 
+        !gender.value || !agree.value  
       ) {
         toast.warning("Fields marked with * cannot be left blank!");
         return;
       } else {
-        const { id, email, password, country, gender, info, agree, arrUser } = this.state;
-        const item = { id, email, password, country, gender, info, agree };
-        this.setState({ arrUser: [...arrUser, item] });
+       const users = {
+            email: email.value,
+            password: password.value,
+            country: country.value,
+            gender: gender.value,
+            info: info.value,
+            agree: agree.value,
+          }
+        setArrUsers([...arUsers,{...users,id}]);  
+        console.log(arUsers);
         toast.success("Submit Success!");
       }
     }
   }
 
-  handleOnDelete(item){
-    this.setState({ confirm:true, id : item.id })
-   }
-
-  handleOnCancel(){
-    this.setState({confirm:false})
-  }
-
-  handleOnConfirm(){
-    this.setState({
-      confirm: false,
-    });
-    let currentUser = this.state.arrUser;
-    currentUser = currentUser.filter((item) => item.id !== this.state.id);
-    this.setState({ arrUser: [...currentUser] });
-  }
-
-  render(){
-    return (<>
+  const handleOnDelete = (user) => {
+    const newData = arUsers.filter((item) => user.id !== item.id);
+    setArrUsers(newData);
+  };
+ 
+return (
+  <>
+      <form onSubmit={(e) => handleOnSubmit(e)}>
     <h1 className='title'>Register</h1>
-      <form onSubmit={(e) => this.handleOnSubmit(e)}>
         <div className="form-control">
           <label htmlFor="email">Email <span>*</span> </label>
-          <input id="email" type="email" name ="email" onChange={(e) => this.handleOnChange(e)}/>
+          <input {...email} id='email' name='email' />
         </div>
         <div className="form-control">
           <label htmlFor="password">Password <span>*</span> </label>
-          <input id="password" type="password" name="password" placeholder='Password more than 8 characters' onChange={(e) => this.handleOnChange(e)}/>
+          <input {...password} id="password" name="password" placeholder='Password more than 8 characters' />
         </div> 
         <div className="form-control">
           <label >Your country <span>*</span> </label>
-          <select name="country" onChange={(e) => this.handleOnChange(e)}>
+          <select name="country" {...country}>
+            <option >Choose your country</option>
             <option value="VietNam">VietNam</option>
             <option value="Lao">Lao</option>
           </select>
@@ -88,41 +68,37 @@ class SubmitForm extends Component{
         <div className="form-control">
           <label>Gender <span>*</span> </label>
           <input 
-          type="radio" 
+          {...gender}
           value="0" 
           name="gender" 
-          defaultChecked={this.state.gender === 0} 
-          onChange={(e)  => this.handleOnChange(e)}
+          defaultChecked={gender.value === 0} 
+          
           />Male
           <input 
-          type="radio" 
+          {...gender}
           value="1" 
           name="gender" 
-          defaultChecked={this.state.gender === 1} 
-          onChange={(e) => this.handleOnChange(e)} 
+          defaultChecked={gender.value === 1} 
+          
           />Female
         </div>
         <div className="form-control">
           <label>Orther infomation</label>
-          <textarea name="info" onChange={(e) => this.handleOnChange(e)}></textarea>
+          <textarea name="info" {...info}></textarea>
         </div>
         <div className="form-control agree">
           <label >Agree with our terms? </label>
-          <input  type="checkbox" name="agree" defaultChecked={this.state.agree} onChange={(e) => this.handleOnChange(e)}/>
+          <input  {...agree} name="agree" defaultChecked={agree.value} />
         </div>
-        <div className="btn-set">
-          <button >Submit</button>
+         <div className="btn-set">
+          <input type='submit' value='submit'/>
         </div>
       </form>
-      <TableSubmit arrUser={this.state.arrUser}
-                  handleOnDelete = {(item) => this.handleOnDelete(item)}  />
-      <Popup confirm = {this.state.confirm} 
-             handleOnCancel={() => this.handleOnCancel()}
-             handleOnConfirm={() => this.handleOnConfirm()}
-      />
-      </>
-    );
-  }
+      <TableSubmit arrUser={arUsers}                 
+                  handleOnDeleteBtn = {(item) => handleOnDelete(item)}  />
+    </>
+  );
 }
 
 export default SubmitForm;
+

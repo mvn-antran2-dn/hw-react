@@ -27,16 +27,22 @@ input:not([type="radio"]):not([type="checkbox"]), textarea, select {
   border-radius: 6px;
   box-sizing: border-box;
 }
-button{
+.btn-set input{
   width: 100%;
   height: 40px;
-  background: aqua;
+  background: aqua !important;
   color: red;
   text-align: center;
   border: 0;
 }
-button:hover{
+.btn-set:hover{
   opacity: 0.6;
+}
+.btn{
+  width: 100%;
+  height: 40px;
+  text-align: center;
+  border: 0;
 }
 textarea{
   height: 100%;
@@ -87,6 +93,9 @@ input[type="number"] {
   justify-content: center;
 }
 span{
+  color: red;
+}
+.btn-delete{
   color: red;
 }
 /* popup */
@@ -140,5 +149,31 @@ span{
 
 .popup-footer .btn-delete {
   background-color: #05ad05;
+}
+
+/* userlist */
+.userList{
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  text-align: center;
+  max-width: 700px;
+  margin-left: 25%;
+}
+.list-btn{
+  display: flex;
+  margin-top: 6%;
+  margin-right: 6%;
+}
+.btn-list{
+  background-color: aqua;
+  color: red;
+  border: 1px solid #111;
+  border-radius: 2px;
+  margin-left: 20px;
+  padding: 1px 15px;
+}
+.btn-list:hover{
+  opacity: 0.5;
 }
 
