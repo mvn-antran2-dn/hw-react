@@ -1,0 +1,42 @@
+.product-list{
+  list-style: none;
+  width: 50%;
+  text-align: center;
+  margin-left: 40%;
+  .product-item{
+    width: 50%;
+    line-height: 30px;
+    .product-catalog{
+      text-transform: capitalize;
+      font-size: 18px;
+      text-align: center;
+    }
+    .product-img{
+      
+      width: 120px;
+      height: 125px;
+    }
+    .product-title{
+      font-size: 22px;
+      font-weight: 600;
+    }
+    .product-bottom {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      // margin: 40px;
+      span{
+        font-size: 20px;
+        color:  red;
+        line-height: 35px;
+      }
+      .btn-show{
+        margin: 40px 0;
+        text-transform: uppercase;
+        background-color: aqua;
+        color: red;
+      }
+    }
+  }
+}
+
