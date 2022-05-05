@@ -10,17 +10,18 @@ export default function ProductDetail({product}) {
   const dispatch = useDispatch();
   const [pros, setPros] = useState([]);
   const favs = useSelector((state) => state.favs.value);
-  const handleClickFav = (e, id) => {
-    e.preventDefault();
+  const handleClickFav = (prods, id) => {
+    prods.preventDefault();
     dispatch(toggle(id));
   };
+
   return (
    <>
    <div className="product-item col-3">
       <h2 className="product-catalog">{product.category}</h2>
       <a href="" className='product-top'>
         <p className={`${favs.includes(product.id) ? "active" : ""} product-heart`}
-        onClick={(e) => handleClickFav(e, product.id)}       
+        onClick={(prods) => handleClickFav(prods, product.id)}       
         >
           <FaRegHeart />
         </p>

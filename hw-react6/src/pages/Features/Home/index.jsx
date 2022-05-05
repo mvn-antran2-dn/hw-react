@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FaHeart } from "react-icons/fa";
+import { FaRegHeart } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { toggle } from "../../../stores/favSlice";
 
@@ -35,13 +35,13 @@ export default function Home() {
       fav: false,
     },
   ]);
-  const handleClickFav = (e, id) => {
-    e.preventDefault();
-    const newPros = pros.map((e) => {
-      if (e.id === id) {
-        e.fav = !e.fav;
+  const handleClickFav = (prods, id) => {
+    prods.preventDefault();
+    const newPros = pros.map((prods) => {
+      if (prods.id === id) {
+        prods.fav = !prods.fav;
       }
-      return e;
+      return prods;
     });
     setPros(newPros);
     dispatch(toggle(id));
@@ -59,9 +59,9 @@ export default function Home() {
                   <p className="pros-price">{item.price}</p>
                   <p
                     className={`${item.fav ? "active" : ""}`}
-                    onClick={(e) => handleClickFav(e, item.id)}
+                    onClick={(prods) => handleClickFav(prods, item.id)}
                   >
-                    <FaHeart />
+                    <FaRegHeart />
                   </p>
                 </div>
               </li>
