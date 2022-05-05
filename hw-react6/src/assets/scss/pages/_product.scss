@@ -2,7 +2,7 @@
   display:flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  
+  margin-top: 100px; 
   .product-list{
     list-style: none;
     text-align: center;
@@ -23,7 +23,7 @@
         position: relative;
         .product-heart{
           position: absolute;
-          margin: -20px 210px;
+          margin: -20px 195px;
           font-size: 25px;
         }
         .active {

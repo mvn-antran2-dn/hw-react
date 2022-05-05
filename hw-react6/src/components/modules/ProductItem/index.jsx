@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useHistory } from "react-router-dom";
 import { FaRegHeart } from "react-icons/fa";
 import { useDispatch } from "react-redux";
@@ -8,7 +8,6 @@ import { useSelector } from "react-redux";
 export default function ProductDetail({product}) {
   let history = useHistory();
   const dispatch = useDispatch();
-  const [pros, setPros] = useState([]);
   const favs = useSelector((state) => state.favs.value);
   const handleClickFav = (prods, id) => {
     prods.preventDefault();

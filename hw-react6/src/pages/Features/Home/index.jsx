@@ -8,28 +8,28 @@ export default function Home() {
   const [pros, setPros] = useState([
     {
       id: 1,
-      img: "https://i.pinimg.com/originals/cb/81/57/cb81571c9324e9da8f6f5e704cba27c8.jpg",
+      img: "https://flone.reactdemo.hasthemes.com/assets/img/product/books/6.jpg",
       title: "Product 1",
       price: 2000,
       fav: false,
     },
     {
       id: 2,
-      img: "https://i.pinimg.com/originals/cb/81/57/cb81571c9324e9da8f6f5e704cba27c8.jpg",
+      img: "https://flone.reactdemo.hasthemes.com/assets/img/product/books/6.jpg",
       title: "Product 2",
       price: 3000,
       fav: false,
     },
     {
       id: 3,
-      img: "https://i.pinimg.com/originals/cb/81/57/cb81571c9324e9da8f6f5e704cba27c8.jpg",
+      img: "https://flone.reactdemo.hasthemes.com/assets/img/product/books/6.jpg",
       title: "Product 3",
       price: 4000,
       fav: false,
     },
     {
       id: 4,
-      img: "https://i.pinimg.com/originals/cb/81/57/cb81571c9324e9da8f6f5e704cba27c8.jpg",
+      img: "https://flone.reactdemo.hasthemes.com/assets/img/product/books/6.jpg",
       title: "Product 4",
       price: 5000,
       fav: false,
