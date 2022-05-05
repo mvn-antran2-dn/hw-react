@@ -1,13 +1,29 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useHistory } from "react-router-dom";
+import { FaRegHeart } from "react-icons/fa";
+import { useDispatch } from "react-redux";
+import { toggle } from "../../../stores/favSlice";
+import { useSelector } from "react-redux";
 
 export default function ProductDetail({product}) {
   let history = useHistory();
+  const dispatch = useDispatch();
+  const [pros, setPros] = useState([]);
+  const favs = useSelector((state) => state.favs.value);
+  const handleClickFav = (e, id) => {
+    e.preventDefault();
+    dispatch(toggle(id));
+  };
   return (
    <>
-   <div className="product-item">
+   <div className="product-item col-3">
       <h2 className="product-catalog">{product.category}</h2>
-      <a href="">
+      <a href="" className='product-top'>
+        <p className={`${favs.includes(product.id) ? "active" : ""} product-heart`}
+        onClick={(e) => handleClickFav(e, product.id)}       
+        >
+          <FaRegHeart />
+        </p>
         <img className="product-img" src={product.image} alt="" />
       </a>
       <h3 className="product-title">

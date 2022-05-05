@@ -34,4 +34,19 @@
     position: absolute;
     left: 10%;
   }
+  .header-action{
+    margin-right: 30px;
+    .counter{
+      position:relative;
+      span {
+        font-size: 13px;
+        color: white;
+        position: absolute;
+        margin: -10px -5px;
+        background-color: red;
+        border-radius: 50%;
+        padding: 2px 5px;
+      }
+    }
+  }
 }

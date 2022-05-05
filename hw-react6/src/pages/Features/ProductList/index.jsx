@@ -16,9 +16,9 @@ export default function Products() {
   return (
     <main className='page-main'>
       <div className="container">
-        <div className="row">
+        <div className="row col-3">
           {productList.map(product =>(
-          <li className="product-list " key={product.id}>
+          <li className="product-list col-3 " key={product.id}>
               <ProductItem product ={product}/>
           </li>
           ))}

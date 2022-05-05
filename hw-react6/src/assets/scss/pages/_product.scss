@@ -1,42 +1,75 @@
-.product-list{
-  list-style: none;
-  width: 50%;
-  text-align: center;
-  margin-left: 40%;
-  .product-item{
-    width: 50%;
-    line-height: 30px;
-    .product-catalog{
-      text-transform: capitalize;
-      font-size: 18px;
-      text-align: center;
-    }
-    .product-img{
-      
-      width: 120px;
-      height: 125px;
-    }
-    .product-title{
-      font-size: 22px;
-      font-weight: 600;
-    }
-    .product-bottom {
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      // margin: 40px;
-      span{
-        font-size: 20px;
-        color:  red;
-        line-height: 35px;
+.row{
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  
+  .product-list{
+    list-style: none;
+    text-align: center;
+    width: 15%;
+    margin: 3% 3%;
+    border: 1px solid black;
+    box-shadow: 8px 8px #d1d1e0;
+    height: 350px;
+    position: relative;
+    .product-item{
+      line-height: 30px;
+      .product-catalog{
+        text-transform: capitalize;
+        font-size: 18px;
+        text-align: center;
       }
-      .btn-show{
-        margin: 40px 0;
-        text-transform: uppercase;
-        background-color: aqua;
-        color: red;
+      .product-top{
+        position: relative;
+        .product-heart{
+          position: absolute;
+          margin: -20px 210px;
+          font-size: 25px;
+        }
+        .active {
+          color: red;
+        }
+        .product-img{    
+          width: 120px;
+          height: 125px;
+        }
+        .product-img:hover{
+          transform: scale(1.1) ;
+        }
+        
+      }
+      .product-title{
+        font-size: 22px;
+        font-weight: 600;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        height: 90px;
+      }
+      .product-bottom {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        span{
+          font-size: 20px;
+          color:  red;
+          line-height: 35px;
+        }
+        .btn-show{
+          margin: 40px 0;
+          text-transform: uppercase;
+          background-color: aqua;
+          color: red;
+          padding: 3px 3px;
+          &:hover{
+            background-color: #e066ff;
+            color: white;
+          }
+        }
       }
     }
   }
+  
 }
-

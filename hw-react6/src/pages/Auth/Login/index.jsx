@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import useAuth from '../../../hooks/useAuth'
 
 export default function Login() {
-  const [email,setEmail] = useState('an.tran20@monstar-lab.com');
+  const [email,setEmail] = useState('an.tran2@monstar-lab.com');
   const [password,setPassword] = useState(123);
   let {login} = useAuth()
   return (

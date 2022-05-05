@@ -1,1 +1,13 @@
-
+.product-show-list{
+  display:flex;
+  justify-content: space-around;
+  .product-show-item{
+    font-size: 20px;
+    .active{
+      color: red;
+    } 
+  }
+  .col-3{
+    max-width: 23%;
+  }
+}
